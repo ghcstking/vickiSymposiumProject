@@ -7,20 +7,22 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.table.*;
 
-public class VickiSymposium extends GUIApplication {
+public class VickiSymposium {
 	
 	private static VickiSymposium cal;
 	//private static WelcomeScreen mainScreen;
 
-	public VickiSymposium(int width, int height) {
-		super(width, height);
+	public VickiSymposium() {
+		
 	}
 	
 	public static void main(String[] args) {
 		JFrame screen = new JFrame();
 		JTextField enter = new JTextField();
-		screen.setSize(1400, 1000);
+		
+		screen.setSize(1200, 1000);
 		enter.setBounds(0, 100, 10, 20);
+		
 		screen.add(enter);
 		screen.setVisible(true);
 	}
