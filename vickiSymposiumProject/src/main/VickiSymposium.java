@@ -38,7 +38,6 @@ public class VickiSymposium {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				name = enter.getText();
-				System.out.println(name);
 			}
 			
 		});
