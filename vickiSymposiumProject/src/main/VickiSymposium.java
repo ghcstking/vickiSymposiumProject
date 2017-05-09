@@ -25,6 +25,10 @@ public class VickiSymposium {
 	}
 	
 	public static void main(String[] args) {
+		createScreen();
+	}
+	
+	public static void createScreen() {
 		JFrame screen = new JFrame();
 		JTextField enter = new JTextField("Enter your name.");
 		JButton save = new JButton("SAVE");
@@ -38,12 +42,16 @@ public class VickiSymposium {
 			}
 			
 		});
+		
 		screen.getContentPane().setLayout(null);
-		screen.setSize(1200, 1000);
 		//screen.getContentPane().setBackground(Color.BLACK);
+		
+		// SIZING
+		screen.setSize(1200, 1000);
 		save.setBounds(600, 535, 100, 30);
 		enter.setBounds(550, 500, 200, 30);
 		
+		// VISIBILITY
 		screen.add(save);
 		screen.add(enter);
 		screen.setVisible(true);
