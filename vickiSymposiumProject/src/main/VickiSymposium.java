@@ -12,48 +12,68 @@ import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.table.*;
 
 public class VickiSymposium {
 	
 	private static String name;
+	private static JFrame introScreen;
+	private static JTextField enter;
+	private static JButton save;
+	private static JPanel calendar;
+	private static JLabel year;
 
 	public VickiSymposium() {
 		
 	}
 	
 	public static void main(String[] args) {
-		createScreen();
+		createIntroScreen();
 	}
 	
-	public static void createScreen() {
-		JFrame screen = new JFrame();
-		JTextField enter = new JTextField("Enter your name.");
-		JButton save = new JButton("SAVE");
-		
+	public static void createIntroScreen() {
+		introScreen = new JFrame();
+		enter = new JTextField("Enter your name.");
+		save = new JButton("SAVE");
+
 		save.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				name = enter.getText();
+				switchToCalScreen();
 			}
 			
 		});
-		
-		screen.getContentPane().setLayout(null);
+		introScreen.getContentPane().setLayout(null);
 		//screen.getContentPane().setBackground(Color.BLACK);
 		
 		// SIZING
-		screen.setSize(1200, 1000);
+		introScreen.setSize(1200, 1000);
 		save.setBounds(600, 535, 100, 30);
 		enter.setBounds(550, 500, 200, 30);
 		
 		// VISIBILITY
-		screen.add(save);
-		screen.add(enter);
-		screen.setVisible(true);
+		introScreen.add(save);
+		introScreen.add(enter);
+		introScreen.setVisible(true);
+	}
+	
+	public static void switchToCalScreen() {
+		calendar = new JPanel();
+		
+		year = new JLabel("LAAAAAAAAAA");
+		introScreen.getContentPane().add(year);
+		
+		save.setVisible(false);
+		enter.setVisible(false);
+		
+		//introScreen.add(calendar);
 	}
 
 }
