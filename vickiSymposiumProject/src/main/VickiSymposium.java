@@ -131,4 +131,7 @@ public class VickiSymposium {
 		thisYear = greg.get(GregorianCalendar.YEAR);
 		thisDay = greg.get(GregorianCalendar.DAY_OF_MONTH);
 	}
+	
+	public static void drawCal(int month, int yr) {
+	}
 }
