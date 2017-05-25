@@ -16,6 +16,8 @@ public class CalendarScreen extends JFrame {
 	private static JScrollPane scroll;
 	private static JTable cal;
 	private static DefaultTableModel model;
+	private static JTextField enter;
+	private static JButton save;
 	private static JLabel mth;
 	private static JLabel welcome;
 	private static JLabel prev;
@@ -25,6 +27,7 @@ public class CalendarScreen extends JFrame {
 	private static int currentYear;
 	private static int thisYear;
 	private static int thisMonth;
+	private static int thisDay;
 	private static int numDays;
 	private static int startDay;
 	private static int row;
@@ -63,10 +66,14 @@ public class CalendarScreen extends JFrame {
 	
 		//JSTUFF
 		mth = new JLabel ("January");
+		save = new JButton("Save event");
+		enter = new JTextField("Enter your event");
 		welcome = new JLabel ("Welcome " + WelcomeScreen.retName());
 		years = new JComboBox();
 		prev = new JLabel();
 		next = new JLabel();
+		save.setBounds(width/2 -50, height-100, 100, 30);
+		enter.setBounds((width/2)-100, height-150, 200, 30);
 		years.setBounds(width - 300, 35, 200, 30);
 		mth.setFont(new Font("Helvetica", Font.BOLD, 40));
 		welcome.setFont(new Font("Helvetica", Font.BOLD + Font.ITALIC, 50));
@@ -78,10 +85,10 @@ public class CalendarScreen extends JFrame {
 		next.setBounds(1100, 120, 50, 50);
 		scroll.setBounds(1, 200, width, height);
 		addActions();
-		// original y: 120
 		
 		//GET INFO
 		greg = new GregorianCalendar();
+		thisDay = greg.get(GregorianCalendar.DATE);
 		thisMonth = greg.get(GregorianCalendar.MONTH);
 		thisYear = greg.get(GregorianCalendar.YEAR);
 		currentMonth = thisMonth;
@@ -103,6 +110,8 @@ public class CalendarScreen extends JFrame {
 		frame.add(years);
 		frame.add(prev);
 		frame.add(next);
+		frame.add(save);
+		frame.add(enter);
 		frame.add(scroll);
 		frame.setVisible(true);
 		
@@ -153,6 +162,9 @@ public class CalendarScreen extends JFrame {
 	
 	public static void reDraw(int month, int yr) {		
 		//UPDATE
+		if (month == thisMonth && yr == thisYear) {
+			
+		}
 		mth.setText(months[month]);
 		years.setSelectedItem(String.valueOf(yr));
 		
