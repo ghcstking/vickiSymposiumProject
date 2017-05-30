@@ -6,6 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.*;
 
+import calendarBack.AnEvent;
 import calendarFront.WelcomeScreen;
  
 public class CalendarScreen extends JFrame {
@@ -16,6 +17,8 @@ public class CalendarScreen extends JFrame {
 	private static JScrollPane scroll;
 	private static JTable cal;
 	private static DefaultTableModel model;
+	private static DefaultTableCellRenderer renderer;
+	private static TableCellRenderer anEvent;
 	private static JTextField enter;
 	private static JButton save;
 	private static JLabel mth;
@@ -54,7 +57,6 @@ public class CalendarScreen extends JFrame {
 		model = new DefaultTableModel(weekdays, 6) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
-				
 			}
 		};
 		cal = new JTable(model);
@@ -63,7 +65,13 @@ public class CalendarScreen extends JFrame {
 		model.setRowCount(6);
 		cal.getTableHeader().setFont(new Font("Helvetica", Font.BOLD, 30));
 		cal.setFont(new Font("Helvetica", Font.BOLD, 20));
-	
+		
+		// RENDERERS 
+		renderer = new DefaultTableCellRenderer();
+		renderer.setHorizontalAlignment(JLabel.LEFT);
+		renderer.setVerticalAlignment(JLabel.TOP);
+		anEvent = new JTableEventRenderer();
+				
 		//JSTUFF
 		mth = new JLabel ("January");
 		save = new JButton("Save event");
@@ -160,7 +168,7 @@ public class CalendarScreen extends JFrame {
 		});
 	}
 	
-	public static void reDraw(int month, int yr) {		
+	public static void reDraw(int month, int yr) {
 		//UPDATE
 		if (month == thisMonth && yr == thisYear) {
 			
@@ -197,6 +205,9 @@ public class CalendarScreen extends JFrame {
 			row = new Integer((i+startDay-2)/7);
 			column = (i+startDay-2)%7;
 			model.setValueAt(i, row, column);
+		}
+		for (int i = 0; i < model.getColumnCount(); i++) {
+			cal.getColumnModel().getColumn(i).setCellRenderer(renderer);
 		}
 	}
 }
