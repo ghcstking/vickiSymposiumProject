@@ -18,7 +18,6 @@ public class CalendarScreen extends JFrame {
 	private static JTable cal;
 	private static DefaultTableModel model;
 	private static DefaultTableCellRenderer renderer;
-	private static TableCellRenderer anEvent;
 	private static JTextField enter;
 	private static JButton save;
 	private static JLabel mth;
@@ -53,6 +52,11 @@ public class CalendarScreen extends JFrame {
 		frame.setSize(width, height);
 		frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
 		
+		// RENDERERS 
+		renderer = new DefaultTableCellRenderer();
+		renderer.setHorizontalAlignment(JLabel.LEFT);
+		renderer.setVerticalAlignment(JLabel.TOP);
+
 		//CALENDAR
 		model = new DefaultTableModel(weekdays, 6) {
 			public boolean isCellEditable(int row, int column) {
@@ -66,11 +70,6 @@ public class CalendarScreen extends JFrame {
 		cal.getTableHeader().setFont(new Font("Helvetica", Font.BOLD, 30));
 		cal.setFont(new Font("Helvetica", Font.BOLD, 20));
 		
-		// RENDERERS 
-		renderer = new DefaultTableCellRenderer();
-		renderer.setHorizontalAlignment(JLabel.LEFT);
-		renderer.setVerticalAlignment(JLabel.TOP);
-		anEvent = new JTableEventRenderer();
 				
 		//JSTUFF
 		mth = new JLabel ("January");
