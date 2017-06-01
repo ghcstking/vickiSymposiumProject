@@ -69,7 +69,12 @@ public class CalendarScreen extends JFrame {
 		model.setRowCount(6);
 		cal.getTableHeader().setFont(new Font("Helvetica", Font.BOLD, 30));
 		cal.setFont(new Font("Helvetica", Font.BOLD, 20));
-		
+		cal.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(Event e) {
+				int row = cal.getSelectedRow();
+				int col = cal.getSelectedColumn();
+			}
+		});
 				
 		//JSTUFF
 		mth = new JLabel ("January");
