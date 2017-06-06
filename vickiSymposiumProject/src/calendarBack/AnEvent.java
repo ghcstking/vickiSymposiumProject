@@ -20,6 +20,9 @@ import javax.swing.JSpinner.DateEditor;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 
+import calendarFront.CalendarScreen;
+import calendarFront.EventItem;
+
 public class AnEvent {
 	
 	private static JFrame panel;
@@ -37,6 +40,7 @@ public class AnEvent {
 	private static Calendar cal;
 	private static Date val;
 	private static JButton submit;
+	
 
 	public AnEvent(int valueAt) {
 		this.date = valueAt;
@@ -60,6 +64,10 @@ public class AnEvent {
 		submit.setBounds(width/7, height/3 + 50, 100, 20);
 		submit.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				EventItem newE = new EventItem();
+				newE.setName(eventName.getText());
+				CalendarScreen.item.add(newE);
+				CalendarScreen.updateCal();
 				panel.dispose();
 			}
 		});

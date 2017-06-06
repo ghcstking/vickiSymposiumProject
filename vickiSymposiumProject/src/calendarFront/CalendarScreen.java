@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.table.*;
 
 import calendarBack.AnEvent;
+import calendarBack.CellRenderer;
 import calendarFront.WelcomeScreen;
  
 public class CalendarScreen extends JFrame {
@@ -41,9 +42,11 @@ public class CalendarScreen extends JFrame {
 	private static String[] weekdays = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 	private static String[] months = {"JANUARY", "FEBRUARY", " MARCH ", "APRIL ", "MAY", 
 			"JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"};
+	public static ArrayList<EventItem> item;
 	
 	public static void main(String[] args) {
 		//SCREEN
+		item = new ArrayList<EventItem>();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int) screenSize.getWidth();
 		height = (int) screenSize.getHeight();
@@ -131,6 +134,10 @@ public class CalendarScreen extends JFrame {
 		reDraw(thisMonth, thisYear);
 	}
 	
+	public static void updateCal() {
+		
+	}
+	
 	public static void addActions() {
 		prev.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -175,9 +182,6 @@ public class CalendarScreen extends JFrame {
 	
 	public static void reDraw(int month, int yr) {
 		//UPDATE
-		if (month == thisMonth && yr == thisYear) {
-			
-		}
 		mth.setText(months[month]);
 		years.setSelectedItem(String.valueOf(yr));
 		
@@ -213,6 +217,23 @@ public class CalendarScreen extends JFrame {
 		}
 		for (int i = 0; i < model.getColumnCount(); i++) {
 			cal.getColumnModel().getColumn(i).setCellRenderer(renderer);
+			cal.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer());
 		}
+	}
+	
+	public static int returnDay() {
+		return thisDay;
+	}
+	public static int returnMonth() {
+		return thisMonth;
+	}
+	public static int returnYear() {
+		return thisYear;
+	}
+	public static int returnCurrentMonth() {
+		return currentMonth;
+	}
+	public static int returnCurrentYear() {
+		return currentYear;
 	}
 }
