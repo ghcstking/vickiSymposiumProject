@@ -56,7 +56,7 @@ public class CalendarScreen extends JFrame {
 		renderer = new DefaultTableCellRenderer();
 		renderer.setHorizontalAlignment(JLabel.LEFT);
 		renderer.setVerticalAlignment(JLabel.TOP);
-
+		
 		//CALENDAR
 		model = new DefaultTableModel(weekdays, 6) {
 			public boolean isCellEditable(int row, int column) {
@@ -70,9 +70,10 @@ public class CalendarScreen extends JFrame {
 		cal.getTableHeader().setFont(new Font("Helvetica", Font.BOLD, 30));
 		cal.setFont(new Font("Helvetica", Font.BOLD, 20));
 		cal.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(Event e) {
-				int row = cal.getSelectedRow();
-				int col = cal.getSelectedColumn();
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() == 2) {
+					AnEvent.main(args);
+				}
 			}
 		});
 				
