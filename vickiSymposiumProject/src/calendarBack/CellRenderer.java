@@ -26,8 +26,7 @@ public class CellRenderer extends DefaultTableCellRenderer {
 		
 		((JLabel) cellComponent).setHorizontalAlignment(JLabel.LEFT);
 		((JLabel) cellComponent).setVerticalAlignment(JLabel.TOP);
-		((JLabel) cellComponent).setSize(getWidth(), getHeight());
-		((JLabel) cellComponent).setText("<html><p style=\"width:" + width+ "px\"></p></html>");
+//		((JLabel) cellComponent).setText("<html><p style=\"width:" + width+ "px\"></p></html>");
 		if (value != null && (column == 0 || column == 6)){
 			cellComponent.setBackground(new Color(173, 190, 219));
 		}
