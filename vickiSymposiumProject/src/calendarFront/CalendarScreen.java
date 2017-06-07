@@ -18,7 +18,8 @@ public class CalendarScreen extends JFrame {
 	private static JScrollPane scroll;
 	private static JTable cal;
 	private static DefaultTableModel model;
-	private static DefaultTableCellRenderer renderer;
+	private static CellRenderer colorize;
+	private static CellEditor scrollers;
 	private static JTextField enter;
 	private static JButton save;
 	private static JLabel mth;
@@ -55,10 +56,8 @@ public class CalendarScreen extends JFrame {
 		frame.setSize(width, height);
 		frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
 		
-		// RENDERERS 
-		renderer = new DefaultTableCellRenderer();
-		renderer.setHorizontalAlignment(JLabel.LEFT);
-		renderer.setVerticalAlignment(JLabel.TOP);
+		//RENDERERS + EDITORS
+		colorize = new CellRenderer();
 		
 		//CALENDAR
 		model = new DefaultTableModel(weekdays, 6) {
@@ -215,10 +214,10 @@ public class CalendarScreen extends JFrame {
 			column = (i+startDay-2)%7;
 			model.setValueAt(i, row, column);
 		}
-		for (int i = 0; i < model.getColumnCount(); i++) {
-			cal.getColumnModel().getColumn(i).setCellRenderer(renderer);
-			cal.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer());
-		}
+		
+		//COLOR WEEKEND + CURRENT DAY
+		cal.setDefaultRenderer(cal.getColumnClass(0), colorize);
+		cal.setDefaultEditor(cal.getColumnClass(0), (TableCellEditor) scrollers);
 	}
 	
 	public static int returnDay() {
