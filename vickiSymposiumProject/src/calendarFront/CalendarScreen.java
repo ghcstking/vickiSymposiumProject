@@ -217,7 +217,7 @@ public class CalendarScreen extends JFrame {
 		
 		//COLOR WEEKEND + CURRENT DAY
 		cal.setDefaultRenderer(cal.getColumnClass(0), colorize);
-		cal.setDefaultEditor(cal.getColumnClass(0), (TableCellEditor) scrollers);
+		//cal.setDefaultEditor(cal.getColumnClass(0), (TableCellEditor) scrollers);
 	}
 	
 	public static int returnDay() {
