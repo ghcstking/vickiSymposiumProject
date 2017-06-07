@@ -235,4 +235,8 @@ public class CalendarScreen extends JFrame {
 	public static int returnCurrentYear() {
 		return currentYear;
 	}
+	public static ArrayList<Integer> values() {
+		ArrayList values = new ArrayList<Integer>();	
+		return values;
+	}
 }
