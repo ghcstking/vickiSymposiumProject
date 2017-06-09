@@ -18,12 +18,19 @@ public class CellRenderer extends DefaultTableCellRenderer {
 	private Dimension screenSize;
 	private Component cellComponent;
 	
-	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, 
+			boolean hasFocus, int row, int column) {
 		cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 		scroller = new JScrollPane(cellComponent, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int) screenSize.getWidth()/7;
-		
+		if (hasFocus()) {
+			System.out.println("YE");
+			JLabel newLabel = new JLabel();
+			String original = table.getModel().getValueAt(row, column).toString();
+			//newLabel.setText("<html><p>" + original + "AAA" + "</p></html>");
+			((JLabel) cellComponent).setText("<html><p>" + original + "AAA" + "</p></html>");
+		}
 		((JLabel) cellComponent).setHorizontalAlignment(JLabel.LEFT);
 		((JLabel) cellComponent).setVerticalAlignment(JLabel.TOP);
 //		((JLabel) cellComponent).setText("<html><p style=\"width:" + width+ "px\"></p></html>");
@@ -41,5 +48,5 @@ public class CellRenderer extends DefaultTableCellRenderer {
 	        		}
 			}
 		return cellComponent;
-		}
+	}
 }

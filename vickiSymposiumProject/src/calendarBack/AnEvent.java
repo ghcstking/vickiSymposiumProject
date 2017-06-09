@@ -40,6 +40,8 @@ public class AnEvent {
 	private static Calendar cal;
 	private static Date val;
 	private static JButton submit;
+	private static int row;
+	private static int col;
 	
 
 	public AnEvent(int valueAt) {
@@ -66,8 +68,10 @@ public class AnEvent {
 			public void mouseClicked(MouseEvent e) {
 				EventItem newE = new EventItem();
 				newE.setName(eventName.getText());
+				newE.setStartTime((Date)startTime.getValue());
+				newE.setEndTime((Date)endTime.getValue());
 				CalendarScreen.item.add(newE);
-				CalendarScreen.updateCal();
+				CalendarScreen.updateCal(row, col);
 				panel.dispose();
 			}
 		});
@@ -116,5 +120,10 @@ public class AnEvent {
 	
 	public static Date saveEnd() {
 		return (Date) endTime.getValue();
+	}
+	
+	public static void getRowCol(int r, int c) {
+		row = r;
+		col = c;
 	}
 }

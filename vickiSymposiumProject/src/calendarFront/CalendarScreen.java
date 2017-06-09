@@ -19,7 +19,7 @@ public class CalendarScreen extends JFrame {
 	private static JTable cal;
 	private static DefaultTableModel model;
 	private static CellRenderer colorize;
-	private static CellEditor scrollers;
+	private static CellUpdaterRenderer update;
 	private static JTextField enter;
 	private static JButton save;
 	private static JLabel mth;
@@ -73,7 +73,9 @@ public class CalendarScreen extends JFrame {
 		cal.setFont(new Font("Helvetica", Font.BOLD, 20));
 		cal.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (e.getClickCount() == 2) {
+				if (e.getClickCount() == 2 && 
+						cal.getModel().getValueAt(cal.getSelectedRow(), cal.getSelectedColumn()) != null) {
+					AnEvent.getRowCol(cal.getSelectedRow(), cal.getSelectedColumn());
 					AnEvent.main(args);
 				}
 			}
@@ -133,8 +135,13 @@ public class CalendarScreen extends JFrame {
 		reDraw(thisMonth, thisYear);
 	}
 	
-	public static void updateCal() {
-		
+	public static void updateCal(int r, int c) {
+//		JLabel newLabel = new JLabel();
+//		String original = cal.getModel().getValueAt(r, c).toString();
+//		newLabel.setText("<html><p>" + original + "AAA" + "</p></html>");
+//		cal.setValueAt((Object) newLabel, r, c);
+		//cal.setDefaultRenderer(cal.getColumnClass(0), update);
+		cal.repaint();
 	}
 	
 	public static void addActions() {
@@ -217,7 +224,6 @@ public class CalendarScreen extends JFrame {
 		
 		//COLOR WEEKEND + CURRENT DAY
 		cal.setDefaultRenderer(cal.getColumnClass(0), colorize);
-		//cal.setDefaultEditor(cal.getColumnClass(0), (TableCellEditor) scrollers);
 	}
 	
 	public static int returnDay() {
@@ -236,7 +242,6 @@ public class CalendarScreen extends JFrame {
 		return currentYear;
 	}
 	public static ArrayList<Integer> values() {
-		ArrayList values = new ArrayList<Integer>();	
-		return values;
+		return null;
 	}
 }
