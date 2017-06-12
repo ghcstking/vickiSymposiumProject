@@ -4,6 +4,7 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
 
 import calendarBack.AnEvent;
@@ -136,12 +137,13 @@ public class CalendarScreen extends JFrame {
 	}
 	
 	public static void updateCal(int r, int c) {
-//		JLabel newLabel = new JLabel();
-//		String original = cal.getModel().getValueAt(r, c).toString();
+		JLabel newLabel = new JLabel();
+		String original = cal.getModel().getValueAt(r, c).toString();
+		String separator = "\n";
 //		newLabel.setText("<html><p>" + original + "AAA" + "</p></html>");
-//		cal.setValueAt((Object) newLabel, r, c);
+//		model.setValueAt(newLabel, r, c);
 		//cal.setDefaultRenderer(cal.getColumnClass(0), update);
-		cal.repaint();
+		cal.setDefaultRenderer(cal.getColumnClass(0), renderer);
 	}
 	
 	public static void addActions() {
@@ -221,7 +223,6 @@ public class CalendarScreen extends JFrame {
 			column = (i+startDay-2)%7;
 			model.setValueAt(i, row, column);
 		}
-		
 		//COLOR WEEKEND + CURRENT DAY
 		cal.setDefaultRenderer(cal.getColumnClass(0), colorize);
 	}

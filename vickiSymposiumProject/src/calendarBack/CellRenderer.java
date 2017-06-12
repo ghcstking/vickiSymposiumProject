@@ -24,13 +24,13 @@ public class CellRenderer extends DefaultTableCellRenderer {
 		scroller = new JScrollPane(cellComponent, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int) screenSize.getWidth()/7;
-		if (hasFocus()) {
-			System.out.println("YE");
-			JLabel newLabel = new JLabel();
-			String original = table.getModel().getValueAt(row, column).toString();
-			//newLabel.setText("<html><p>" + original + "AAA" + "</p></html>");
-			((JLabel) cellComponent).setText("<html><p>" + original + "AAA" + "</p></html>");
-		}
+//		if (table.getMouseListeners().) {
+//			System.out.println("YE");
+//			JLabel newLabel = new JLabel();
+//			String original = table.getModel().getValueAt(row, column).toString();
+//			//newLabel.setText("<html><p>" + original + "AAA" + "</p></html>");
+//			((JLabel) cellComponent).setText("<html><p>" + original + "AAA" + "</p></html>");
+//		}
 		((JLabel) cellComponent).setHorizontalAlignment(JLabel.LEFT);
 		((JLabel) cellComponent).setVerticalAlignment(JLabel.TOP);
 //		((JLabel) cellComponent).setText("<html><p style=\"width:" + width+ "px\"></p></html>");
@@ -40,13 +40,20 @@ public class CellRenderer extends DefaultTableCellRenderer {
 		else {
 			cellComponent.setBackground(Color.WHITE);
 		}
+		String stringedVal = value.toString();
+		for (int i = 0; i < stringedVal.length(); i++) {
+			if (stringedVal. == " ") {
+				
+			}
+		}
+		String val = value.toString().substring(0, endIndex)
 		if (value != null) {
 			if (Integer.parseInt(value.toString()) == CalendarScreen.returnDay() && 
 					CalendarScreen.returnCurrentMonth() == CalendarScreen.returnMonth() && 
 					CalendarScreen.returnCurrentYear() == CalendarScreen.returnYear()) {
 	        		cellComponent.setBackground(new Color(219, 187, 173));
-	        		}
-			}
+	        }
+		}
 		return cellComponent;
 	}
 }
