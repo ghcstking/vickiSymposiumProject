@@ -46,7 +46,7 @@ public class WelcomeScreen extends JFrame {
 		// SIZING
 		introScreen.setSize(width, height);
 		save.setBounds(width/2 - 100, height/2 - 30, 100, 30);
-		enter.setBounds(width/2 - 200, height/2 - 60, 200, 30);
+		enter.setBounds(width/2 - 300, height/2 - 30, 200, 30);
 		
 		// VISIBILITY
 		introScreen.add(save);
