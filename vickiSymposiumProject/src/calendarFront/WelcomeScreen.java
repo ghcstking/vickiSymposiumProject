@@ -22,10 +22,6 @@ public class WelcomeScreen extends JFrame {
 	private static JButton save;
 	private static String name;
 	
-	public WelcomeScreen() {
-		
-	}
-	
 	public static void main(String[] args) {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int) screenSize.getWidth();
@@ -49,8 +45,8 @@ public class WelcomeScreen extends JFrame {
 		
 		// SIZING
 		introScreen.setSize(width, height);
-		save.setBounds(600, 535, 100, 30);
-		enter.setBounds(550, 500, 200, 30);
+		save.setBounds(width/2 - 100, height/2 - 30, 100, 30);
+		enter.setBounds(width/2 - 100, height/2 - 30, 100, 30);
 		
 		// VISIBILITY
 		introScreen.add(save);
