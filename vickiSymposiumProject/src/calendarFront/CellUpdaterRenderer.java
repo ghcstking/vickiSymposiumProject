@@ -14,7 +14,7 @@ import calendarBack.AnEvent;
 
 public class CellUpdaterRenderer extends DefaultTableCellRenderer {
 	private Component cellComponent;
-	
+	// For symposium purposes, this class never runs.
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean 
 			hasFocus, int row, int column) {
 		cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
