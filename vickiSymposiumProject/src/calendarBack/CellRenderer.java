@@ -40,13 +40,6 @@ public class CellRenderer extends DefaultTableCellRenderer {
 		else {
 			cellComponent.setBackground(Color.WHITE);
 		}
-		String stringedVal = value.toString();
-		for (int i = 0; i < stringedVal.length(); i++) {
-			if (stringedVal. == " ") {
-				
-			}
-		}
-		String val = value.toString().substring(0, endIndex)
 		if (value != null) {
 			if (Integer.parseInt(value.toString()) == CalendarScreen.returnDay() && 
 					CalendarScreen.returnCurrentMonth() == CalendarScreen.returnMonth() && 
