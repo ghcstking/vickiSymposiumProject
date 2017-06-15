@@ -4,14 +4,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.*;
-
-import gui6.components.Visible;
-import gui6.screens.ClickableScreen;
-import gui6.components.Graphic;
 
 public class WelcomeScreen extends JFrame {
 
