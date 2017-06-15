@@ -93,17 +93,15 @@ public class CalendarScreen extends JFrame {
 		years = new JComboBox();
 		prev = new JLabel();
 		next = new JLabel();
-		save.setBounds(width/2 -50, height-100, 100, 30);
-		enter.setBounds((width/2)-100, height-150, 200, 30);
 		years.setBounds(width - 300, 35, 200, 30);
 		mth.setFont(new Font("Helvetica", Font.BOLD, 40));
 		welcome.setFont(new Font("Helvetica", Font.BOLD + Font.ITALIC, 50));
 		mth.setBounds(width/2 - mth.getPreferredSize().width/2, 100, 250, 100);
-		welcome.setBounds(25, 25, welcome.getPreferredSize().width, 40);
+		welcome.setBounds(25, 25, welcome.getPreferredSize().width, 100);
 		prev.setIcon(new ImageIcon("resources/left.png"));
 		prev.setBounds(100, 120, 50, 50);
 		next.setIcon(new ImageIcon("resources/right.png"));
-		next.setBounds(1100, 120, 50, 50);
+		next.setBounds(width - 100, 120, 50, 50);
 		scroll.setBounds(1, 200, width, height);
 		addActions();
 		
