@@ -4,7 +4,6 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
 
 import calendarBack.AnEvent;
@@ -28,6 +27,7 @@ public class CalendarScreen extends JFrame {
 	private static JLabel prev;
 	private static JLabel next;
 	private static JComboBox years;
+	private static Dimension screenSize;
 	private static int currentMonth;
 	private static int currentYear;
 	private static int thisYear;
@@ -49,7 +49,7 @@ public class CalendarScreen extends JFrame {
 	public static void main(String[] args) {
 		//SCREEN
 		item = new ArrayList<EventItem>();
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int) screenSize.getWidth();
 		height = (int) screenSize.getHeight();
 		frame = new JFrame();
@@ -78,9 +78,6 @@ public class CalendarScreen extends JFrame {
 				if (e.getClickCount() == 2 && 
 						cal.getModel().getValueAt(cal.getSelectedRow(), cal.getSelectedColumn()) != null) {
 					AnEvent.main(args);
-					cal.setDefaultRenderer(cal.getColumnClass(0), update);
-					retRow();
-					retCol();
 				}
 			}
 		});
@@ -135,10 +132,6 @@ public class CalendarScreen extends JFrame {
 		frame.setVisible(true);
 		
 		reDraw(thisMonth, thisYear);
-	}
-	
-	public static void updateCal() {
-		
 	}
 	
 	public static void addActions() {
@@ -236,14 +229,5 @@ public class CalendarScreen extends JFrame {
 	}
 	public static int returnCurrentYear() {
 		return currentYear;
-	}
-	public static ArrayList<Integer> values() {
-		return null;
-	}
-	public static int retRow() {
-		return cal.getSelectedRow();
-	}
-	public static int retCol() {
-		return cal.getSelectedColumn();
 	}
 }
