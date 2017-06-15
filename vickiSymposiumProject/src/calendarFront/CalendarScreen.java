@@ -59,6 +59,7 @@ public class CalendarScreen extends JFrame {
 		
 		//RENDERERS + EDITORS
 		colorize = new CellRenderer();
+		update = new CellUpdaterRenderer();
 		
 		//CALENDAR
 		model = new DefaultTableModel(weekdays, 6) {
@@ -76,8 +77,10 @@ public class CalendarScreen extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 2 && 
 						cal.getModel().getValueAt(cal.getSelectedRow(), cal.getSelectedColumn()) != null) {
-					AnEvent.getRowCol(cal.getSelectedRow(), cal.getSelectedColumn());
 					AnEvent.main(args);
+					cal.setDefaultRenderer(cal.getColumnClass(0), update);
+					retRow();
+					retCol();
 				}
 			}
 		});
@@ -136,14 +139,8 @@ public class CalendarScreen extends JFrame {
 		reDraw(thisMonth, thisYear);
 	}
 	
-	public static void updateCal(int r, int c) {
-		JLabel newLabel = new JLabel();
-		String original = cal.getModel().getValueAt(r, c).toString();
-		String separator = "\n";
-//		newLabel.setText("<html><p>" + original + "AAA" + "</p></html>");
-//		model.setValueAt(newLabel, r, c);
-		//cal.setDefaultRenderer(cal.getColumnClass(0), update);
-		cal.setDefaultRenderer(cal.getColumnClass(0), renderer);
+	public static void updateCal() {
+		
 	}
 	
 	public static void addActions() {
@@ -244,5 +241,11 @@ public class CalendarScreen extends JFrame {
 	}
 	public static ArrayList<Integer> values() {
 		return null;
+	}
+	public static int retRow() {
+		return cal.getSelectedRow();
+	}
+	public static int retCol() {
+		return cal.getSelectedColumn();
 	}
 }
