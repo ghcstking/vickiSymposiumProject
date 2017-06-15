@@ -15,9 +15,10 @@ public class WelcomeScreen extends JFrame {
 	private static JTextField enter;
 	private static JButton save;
 	private static String name;
+	private static Dimension screenSize;
 	
 	public static void main(String[] args) {
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int) screenSize.getWidth();
 		height = (int) screenSize.getHeight();
 		introScreen = new JFrame();
