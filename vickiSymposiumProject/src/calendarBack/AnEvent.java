@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JSpinner;
 import javax.swing.JSpinner.DateEditor;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 
@@ -26,6 +27,8 @@ import calendarFront.EventItem;
 public class AnEvent {
 	
 	private static JFrame panel;
+	private static JFrame newPanel;
+	private static JLabel label;
 	private static JLabel sTime;
 	private static JLabel eTime;
 	private static JLabel eName;
@@ -71,9 +74,16 @@ public class AnEvent {
 				newE.setStartTime((Date)startTime.getValue());
 				newE.setEndTime((Date)endTime.getValue());
 				CalendarScreen.item.add(newE);
-				row = CalendarScreen.retRow();
-				col = CalendarScreen.retCol();
-//				CalendarScreen.updateCal();
+				newPanel = new JFrame("Apologies");
+				newPanel.setLayout(null);
+				newPanel.setBounds(width/3, height/9, 500, 200);
+				label = new JLabel("<html><p>Hey folks. That's the end of the program because I never quite</p> "
+						+ "<p>figured out how to get events to save/add to the calendar</p>"
+						+ "<p> without messing up the entire calendar.</p>"
+						+ "<br><p>I'm pretty disappointed too that I didn't finish. :(</p></html>");
+				label.setBounds(10,0,500,200);
+				newPanel.add(label);
+				newPanel.setVisible(true);
 				panel.dispose();
 			}
 		});
