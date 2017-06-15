@@ -71,7 +71,9 @@ public class AnEvent {
 				newE.setStartTime((Date)startTime.getValue());
 				newE.setEndTime((Date)endTime.getValue());
 				CalendarScreen.item.add(newE);
-				CalendarScreen.updateCal(row, col);
+				row = CalendarScreen.retRow();
+				col = CalendarScreen.retCol();
+//				CalendarScreen.updateCal();
 				panel.dispose();
 			}
 		});
@@ -122,8 +124,11 @@ public class AnEvent {
 		return (Date) endTime.getValue();
 	}
 	
-	public static void getRowCol(int r, int c) {
-		row = r;
-		col = c;
+	public static int row() {
+		return row;
+	}
+	
+	public static int col() {
+		return col;
 	}
 }
