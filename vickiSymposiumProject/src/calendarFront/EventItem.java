@@ -3,7 +3,7 @@ package calendarFront;
 import java.util.Date;
 
 public class EventItem {
-	// no static
+	// nothing should be static here
 	private String name;
 	private Date startTime;
 	private Date endTime;
@@ -29,6 +29,4 @@ public class EventItem {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
 }
